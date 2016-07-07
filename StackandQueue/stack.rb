@@ -20,6 +20,11 @@ class Stack
     print @array[topindex-1]
   end
 
+  def empty?
+    return true if @topindex==0
+    return false
+  end
+  
   def display
     i=0
     while i<@array.length
