@@ -1,11 +1,19 @@
 class Stack
-  def initialize
-  	@array=[0,1,2,3,4]
+  def initialize(array)
+    @array=array
+    @topindex=array.length
   end
-  def pushh(anything)
-  	length=@array.length
-  	temp=Array.new(length+1)
-  	i=0
-  	while i<length
-  		temp[i]=@array
+  attr_accessor :array, :topindex
+ 
+  def push(whatever)
+    @array[@topindex]=whatever
+    @topindex+=1
   end
+
+  def pop
+    @array[@topindex]=
+end
+
+s=Stack.new([1,3,4])
+s.push(2)
+print s.array
