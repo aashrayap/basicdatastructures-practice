@@ -17,9 +17,9 @@ class HashTable
   	puts "error message"
   end
 
-  def insert(word)
+  def insert(word,define)
   	@buckets[hash(word)]=LinkedList.new if @buckets[hash(word)].nil?
-  	@buckets[hash(word)].add_node(word)
+  	@buckets[hash(word)].add_node(word,define)
   end
 
   def render_list
@@ -31,10 +31,19 @@ class HashTable
   	  end
   	end
   end
+
+  def define(word)
+  	bucket_index=hash(word)
+  	word_node=@buckets[bucket_index].find_node(word)
+  	puts "The definition of #{word} is #{@buckets[bucket_index].finder_node.define}"
+  end
+
+
 end
 
 h=HashTable.new
-h.insert("buddy")
-h.insert('gnarly')
-h.insert("bee")
-h.render_list
+h.insert("buddy","to be a bud")
+h.insert("calvin","a cool guy")
+h.define('buddy')
+h.define('calvin')
+# h.render_list
