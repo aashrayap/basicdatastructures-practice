@@ -27,6 +27,4 @@ class Queue
       i+=1
     end
   end
-
-
 end
