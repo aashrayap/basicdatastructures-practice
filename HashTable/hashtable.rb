@@ -1,6 +1,8 @@
+require './linkedlist.rb'
+
 class HashTable
-  def intitialize
-  	@buckets=Array.new
+  def initialize
+  	@buckets=Array.new(26)
   end
 
   def hash(word)
@@ -15,12 +17,24 @@ class HashTable
   	puts "error message"
   end
 
-  # def insert(word)
-  # 	index=hash(word)
+  def insert(word)
+  	@buckets[hash(word)]=LinkedList.new if @buckets[hash(word)].nil?
+  	@buckets[hash(word)].add_node(word)
+  end
 
-
+  def render_list
+  	@buckets.each_with_index do |bucket,index|
+  	  if bucket.nil?
+  		puts "nothing in #{index} bucket "
+  	  else
+  	  	bucket.print_list
+  	  end
+  	end
+  end
 end
 
 h=HashTable.new
-a=h.hash('hi')
-puts a
+h.insert("buddy")
+h.insert('gnarly')
+h.insert("bee")
+h.render_list
